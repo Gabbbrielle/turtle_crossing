@@ -1,11 +1,10 @@
 from turtle import Turtle
-
 import random
 
 Y = random.randint(-280, 280)
 X = random.randint(350, 380)
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-STARTING_MOVE_DISTANCE = 5
+STARTING_MOVE_DISTANCE = 20
 MOVE_INCREMENT = 10
 
 
@@ -13,16 +12,16 @@ class CarManager(Turtle):
     def __init__(self):
         super().__init__()
         self.car()
-        # self.move()
+
 
     def move(self):
-        y = random.randint(-280, 280-25)
-        x = random.randint(350, 500)
-        while -320 < self.xcor() >= -350:
-            self.speed("slowest")
+        y = random.randint(-280, 280 - 25)
+        x = random.randint(310, 500)
+        if -300 < self.xcor() >= -300:
+            self.speed(1)
             self.forward(STARTING_MOVE_DISTANCE)
-        if self.xcor() <= -320:
-            self.color(random.choices(COLORS))
+        if self.xcor() <= -300:
+            self.color(random.choice(COLORS))
             self.ht()
             self.speed('fastest')
             self.penup()
@@ -31,7 +30,7 @@ class CarManager(Turtle):
 
     def car(self):
         y = random.randint(-250, 250)
-        x = random.randint(350, 400)
+        x = random.randint(300, 800)
         self.ht()
         self.speed('fastest')
         self.penup()
@@ -41,10 +40,4 @@ class CarManager(Turtle):
         self.setheading(180)
         self.color(random.choice(COLORS))
         self.st()
-        while True:
-            self.move()
-
-
-
-
 
