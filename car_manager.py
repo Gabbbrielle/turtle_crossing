@@ -6,13 +6,36 @@ X = random.randint(350, 380)
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 20
 MOVE_INCREMENT = 10
+WAVE = 5
 
 
-class CarManager(Turtle):
+class Car(Turtle):
     def __init__(self):
         super().__init__()
-        self.car()
+        y = random.randint(-250, 250)
+        x = random.randint(300, 800)
+        self.ht()
+        self.speed('fastest')
+        self.penup()
+        self.goto(x, y)
+        self.shape('square')
+        self.shapesize(stretch_wid=.75, stretch_len=1.50)
+        self.setheading(180)
+        self.color(random.choice(COLORS))
+        self.st()
 
+
+class CarManagement(Car):
+    def __init__(self):
+        super().__init__()
+        self.cars = []
+        self.wave()
+        print(self.cars)
+
+    def wave(self):
+        for unit in range(WAVE):
+            unit = Car()
+            self.cars.append(unit)
 
     def move(self):
         y = random.randint(-280, 280 - 25)
@@ -27,17 +50,3 @@ class CarManager(Turtle):
             self.penup()
             self.goto(x, y)
             self.st()
-
-    def car(self):
-        y = random.randint(-250, 250)
-        x = random.randint(300, 800)
-        self.ht()
-        self.speed('fastest')
-        self.penup()
-        self.goto(x, y)
-        self.shape('square')
-        self.shapesize(stretch_wid=.75, stretch_len=1.50)
-        self.setheading(180)
-        self.color(random.choice(COLORS))
-        self.st()
-
